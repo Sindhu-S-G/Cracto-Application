@@ -1,0 +1,32 @@
+﻿@model Doctors_Information_System.Models.OtpVerification
+
+@{
+    ViewBag.Title = "OTP Verification";
+}
+
+<div class="container-fluid body-content" style="background-color:rgb(127,127,127);padding-top:10em;padding-bottom:10em;">
+    <div class="form-area" style="background-color:#5bc0de;">
+
+        <h2 style="text-align:center;color:white;">OTP Verification</h2>
+        <div style="background-color:#eeeeee;">
+            @using (Html.BeginForm())
+            {
+
+                <div class="container body-content">
+                    <center>
+                        <div class="codeVerify-area">
+                            <div class="text-styles">
+                                @Html.TextBoxFor(m => m.OtpVerificationCode, new { @class = "form-control input-lg", @placeholder = "Enter OTP Code", @id = "otpcode" })
+                                @Html.ValidationMessageFor(m => m.OtpVerificationCode, "", new { @class = "text-danger", @id = "otpAlert" })
+                            </div>
+                            <div class="submit-btn ">
+                                <input type="submit" value="Register" class="btn btn-info btn-lg btn-size " id="registerOtp" />
+                            </div>
+                        </div>
+                    </center>
+                </div>
+            }
+            </div>
+        </div>
+    </div>
+

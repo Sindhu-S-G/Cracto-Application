@@ -1,0 +1,13 @@
+﻿
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle settings" type="button" data-toggle="dropdown">
+        Settings
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-content">
+        <li>@Html.ActionLink("Change Password", "ChangePassword", "DoctorsProfile", htmlAttributes: new { id = "chngPasswordLink" })</li>
+        <li class="divider"></li>
+        <li>@Html.ActionLink("Log Out", "Logout", "DoctorsProfile", htmlAttributes: new { id = "logoff" })</li>
+    </ul>
+</div>
+

@@ -1,0 +1,413 @@
+﻿body {
+    padding-top: 50px;
+   /* padding-bottom: 20px;*/
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+    height: auto;
+    width:auto;
+    align-content:center;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.input-area
+{
+    height:100%;
+    width:100%;
+}
+.dropdown
+{
+    height:3.5em;
+    font:regular 22px;
+    font-family:'Arial', Helvetica, sans-serif;
+}
+.navbar
+{
+    background-color:#ffffff;
+    border-color:#ffffff;
+}
+#registerLink
+{
+    background-color:#ffffff;
+    color:#0094ff;
+}
+#loginLink
+{
+    background-color:#ffffff;
+    color:#0094ff;
+}
+.text-box-align
+{
+    float: left;
+    display: inline;
+    width:22em;
+}
+.btn-style
+{
+    float: left;
+    display: inline;
+    width:11em;
+}
+.dropdown-menu
+{
+    width:auto;
+}
+#registerLink:hover
+{
+    background-color:#eeeeee;
+}
+#loginLink:hover
+{
+     background-color:#eeeeee;
+}
+li
+{
+    width:auto;
+}
+.div-list-styling
+{
+    position: relative;
+    width: 100%;
+    height: 20em;
+    overflow: auto;
+}
+
+
+
+/*login form, register for doctor, register for patient*/
+#loginForm
+{
+    margin:auto;
+}
+.traverse-link
+{
+    width: 21em;
+    margin: auto;
+    text-align:right;
+}
+.form-area
+{
+    border: 1px solid rgb(128, 128, 128);
+    margin: auto;
+    width: 40em;
+    height: auto;
+    border-radius: 5px;
+}
+div
+{
+   /*border: 1px solid black;*/ 
+}
+.form-group
+{
+    width:100%;
+    padding:5px;
+}
+.text-styles
+{
+    padding: 8px;
+    margin-top:8px;
+    height: initial;
+    width: 21em;
+    margin: auto;
+
+}
+.submit-btn
+{
+    margin:auto;
+    margin-top:8px;
+    width: 20em;
+}
+.btn-size
+{
+    width:100%;
+}
+.login-area
+{
+    width:50%;
+    padding:12px;
+    border:1px solid black;
+    border-radius:5px;
+    height:20em;
+}
+
+
+
+/*Pofile pages*/
+.navigate
+{
+    background-color:#191970;
+    color:#ffffff;
+    border-color:#191970;
+}
+#searchLink
+{
+    background-color:#191970;
+    color:#ffffff;
+}
+#searchLink:hover
+{
+    background-color:#00008B;
+}
+#profileLink
+{
+     background-color:#191970;
+    color:#ffffff;
+}
+#profileLink:hover
+{
+    background-color:#00008B;
+}
+#settingsLink
+{
+    background-color:#191970;
+    color:#ffffff;
+}
+#settingsLink:hover
+{
+    background-color:#00008B;
+}
+.settings
+{
+   position:relative;
+   background-color:#191970;
+   color:#ffffff;  
+   top: 19%;
+   right:20%;
+   border-color:#191970;
+}
+.dropdown-content
+{
+    background-color:#191970;
+}
+#accEditLink
+{
+    color:#ffffff;
+}
+#chngPasswordLink
+{
+    color:#ffffff;
+}
+#logoff
+{
+    color:#ffffff;
+}
+.profile-pic
+{
+    width:25%;
+    height:17.5em;
+    float:left;
+    display:inline;
+}
+.content
+{
+    padding-top:15px;
+    padding-bottom:15px;
+    height:20em;
+}
+.basic-intro
+{
+    width:25%;
+    height:17.5em;
+    float:left;
+    display:inline;
+    border:1px solid black;
+    margin-left:5px;
+}
+
+/*Change Password*/
+
+.change-area
+{
+    width:100%;
+
+}
+.form-label
+{
+    margin-top:12px;
+}
+.btn-save 
+{
+    width: 10em;
+}
+
+/*Edit Account*/
+
+.edit-area
+{
+    display:inline;
+    float:left;
+    margin-left:10%;
+}
+.input-style
+{
+    width: auto;
+    height: 5em;
+}
+.input-divs
+{
+    width:82%;
+    height:35em;
+}
+.dropdown-list
+{
+    width:17em;
+    height:2.5em;
+}
+.profile-image
+{
+    border: 1px solid black;
+    width:20%;
+    height:10em;
+  
+}
+.sub-btn
+{
+    width:10em;
+}
+
+
+/*Otp verification*/
+#OtpCode
+{
+    text-align:center;
+}
+.codeVerify-area
+{
+     width:auto;
+    padding:12px;
+    border-radius:5px;
+    height:20em;
+}
+
+
+/*Search Result Page*/
+.doc-info-col
+{
+    border:1px solid black; 
+    margin:0px;
+    width:100%;
+    height:14em;
+}
+.doc-timing-col
+{
+    border:1px solid black; 
+    margin:0px;
+    width:100%;
+    height:15em;
+}
+.doc-details-col
+{
+    border:1px solid black;
+    height:100%;
+    width:70%; 
+    display:inline;
+    float:left;
+    padding:5px;
+}
+.doc-availability-col
+{
+    border:1px solid black;
+    height:100%;
+    width:30%; 
+    display:inline;
+    float:right;
+    padding:5px;
+}
+
+
+/*Profile Editing of doctor*/
+.profile-area
+{
+    border:1px solid black;
+    height:15em;
+}
+.img-part
+{
+    border:1px solid black;
+    width:30%;
+    height:15em;
+    display:inline;
+    float:left;
+}
+.info-part
+{
+    border:1px solid black;
+    width:70%;
+    height:auto;
+    display:inline;
+    float:left;
+    padding:10px;
+}
+#editProfile
+{
+    width:10em;
+}
+.professional-details
+{
+    border:1px solid black;
+    width:100%;
+    height:5em;
+    padding :5px;
+}
+.btn-edit
+{
+    position:relative;
+    left:90%;
+    bottom:20%;
+}
+
+
+/*Appointment*/
+.data-area
+{
+    width:40%;
+    padding:15px;
+    border:1px solid black;
+    border-radius:5px;
+    height:25em;
+}
+.data-style
+{
+    text-align:left;
+    height:5em;
+}
+
+
+/*Time Availability*/
+.day-date-details
+{
+    border: 1px solid black;
+    display: inline;
+    float: left;
+    height: auto;
+    width: 12.5%;
+    padding: 5px;
+}
+.time-slot
+{
+    border: 1px solid black;
+    display: inline;
+    float: left;
+    height: auto;
+    width: 12.5%;
+    padding: 5px;
+}
+
+
+

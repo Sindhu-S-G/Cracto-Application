@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class=" navbar navbar-inverse navbar-fixed-top navigate">
+            <ul class="nav navbar-nav nav-pills">
+                <li>@Html.ActionLink("Find a Doctor", "SearchLayout", "DoctorsProfile", htmlAttributes: new { id = "searchLink" })</li>
+                <li>@Html.ActionLink("My Account", "Account", "DoctorsProfile", htmlAttributes: new { id = "profileLink" })</li>
+                <li>@Html.ActionLink("Set Timings", "TimeSetting", "DoctorsProfile", htmlAttributes: new { id = "profileLink" })</li>
+                <li>@Html.ActionLink("Feedback", "Feedback", "DoctorsProfile", htmlAttributes: new { id = "profileLink" })</li>
+                <li>@Html.ActionLink("Records", "Record", "DoctorsProfile", htmlAttributes: new { id = "profileLink" })</li>
+            </ul>
+            <div class="nav navbar-right ">
+                @Html.Partial("_DocsSettingsPartial")
+            </div>
+        </nav>
+    </div>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

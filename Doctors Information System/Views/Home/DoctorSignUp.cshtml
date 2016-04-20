@@ -1,0 +1,47 @@
+﻿
+@model Doctors_Information_System.Models.RegistrationDetailModel
+
+@{
+    ViewBag.Title = "Doctors Registration";
+}
+
+    <div class="container-fluid body-content" style="background-color:rgb(127,127,127);padding-top:10em;padding-bottom:10em;">
+        <div class="form-area" style="background-color:#5bc0de;">
+            <h2 style="text-align:center;color:white;">Register</h2>
+            <div style="background-color:#eeeeee;height:17.35em;">
+                @using (Html.BeginForm("DoctorSignUp", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+
+                    <div class="traverse-link">
+                        @Html.ActionLink("Register for Others?", "PatientSignUp", "Home")
+                    </div>
+                    <div class=" text-styles">
+                        @Html.TextBoxFor(model => model.EmailId, new { @class = "form-control input-lg", @placeholder = "Enter Email-Id", @id = "emailId" })
+                        @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger", @id = "emailAlert" })
+                        <span class="text-danger" id="serverAlert">@ViewBag.message</span>
+                    </div>
+                    <div class=" text-styles">
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control input-lg", @placeholder = "Enter Password", @id = "password" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger", @id = "passwordAlert" })
+                    </div>
+                    <div class="submit-btn ">
+                        <input type="submit" value="Register" class="btn btn-info btn-lg btn-size" id="DoctorRegister" />
+                    </div>
+
+                }
+
+            </div>
+            </div>
+
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/register")
+}
+
+
+
+

@@ -1,0 +1,51 @@
+﻿@model Doctors_Information_System.Models.DoctorsProfileModel
+
+@{
+    ViewBag.Title = "Search Result";
+}
+
+
+<div class=" container body-content" style="border:1px solid black;">
+    <div class="doc-info-col" >
+        <div class="doc-details-col">
+            <h2 style="font-size:16px;">Name:</h2>
+            <p>Qualification</p>
+            <p>Specialization </p>
+            <p>Experience</p>
+        </div>
+        <div class="doc-availability-col">
+            <p>Recommendations</p>
+            <p>Feedbacks</p>
+            <p>Locations</p>
+            <p>Consulting Fee</p>
+            <p>Time Availability</p>
+            <input type="Submit" value="Book Appointment" class="btn btn-primary btn-sm" id="appoint"/>
+        </div>
+    </div>
+    <div class="doc-info-col " id="appointmenttime" style="display: block;">
+        <div class="day-date-details"> </div>
+        <div class="time-slot" id="first-left">
+        </div>
+        <div class="time-slot" id="second-left">
+        </div>
+        <div class="time-slot" id="third-left">
+        </div>
+        <div class="time-slot" id="middle">
+        </div>
+        <div class="time-slot" id="third-right">
+        </div>
+        <div class="time-slot" id="second-right">
+        </div>
+        <div class="time-slot" id="first-right">
+        </div>
+
+    </div>
+
+</div>
+@section Scripts{
+    @Scripts.Render("~/bundles/register")
+    
+}
+
+
+

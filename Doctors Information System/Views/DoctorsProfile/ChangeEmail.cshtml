@@ -1,0 +1,45 @@
+﻿@model Doctors_Information_System.Models.ChangeEmail
+
+    @using (Html.BeginForm())
+    {
+
+
+        <div class="container-fluid body-content" style="background-color:rgb(127,127,127);padding-top:10em;padding-bottom:10em;">
+            <div class="form-area" style="background-color:#5bc0de;">
+                <h2 style="text-align:center;color:white;">Change E-Mail</h2>
+                <div class="change-area" style="background-color:#eeeeee;height:17.35em;">
+
+
+                    <div class="form-group">
+                        <div style="text-align: center; width: 71%;">
+                            @Html.Label("Email Id", new { @class = "control-label col-md-10" })
+                        </div>
+                        <div class="text-styles">
+                            @Html.TextBoxFor(model => model.EmailId, new { @class = "form-control ",@id="newEmail" } )
+                            @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger",@id="newEmailAlert"})
+                            <span class="text-danger" id="serverEmailAlert">@ViewBag.EmailMessage</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div style="text-align: center; width: 71%;">
+                            @Html.Label("Password",new { @class = "control-label col-md-10" })
+                            </div>
+                            <div class="text-styles">
+                                @Html.PasswordFor(model => model.Password, new { @class = "form-control",@id="userPassword" })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger",@id="userPasswordAlert" })
+                                <span class="text-danger" id="serverPasswordAlert">@ViewBag.PasswordMessage</span>
+                            </div>
+                        </div>
+
+                    <div class="form-group">
+                        <div class=" col-md-10" style="text-align: center;width:100%;">
+                            <input type="submit" value="Save Email" class="btn btn-primary btn-save" id="SaveDoctorEmail" />
+                            @Html.ActionLink("Cancel", "Account")
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    }
+

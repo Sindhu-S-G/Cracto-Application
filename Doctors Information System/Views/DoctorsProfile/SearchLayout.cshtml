@@ -1,0 +1,51 @@
+﻿@model Doctors_Information_System.Models.SearchFilterModels
+
+
+<div class="container body-content">
+
+    <div class="jumbotron body-content">
+        <h1></h1>
+
+    </div>
+    @using (Html.BeginForm("SearchResult", "DoctorsProfile", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="input-area col-sm-10">
+            <div class="text-box-align">
+                @Html.TextBoxFor(model => model.CityName, null, new { @class = " dropdown-toggle form-control input-lg", @id = "city", @placeholder = "Cities", @autocomplete = "off", @readonly = "", data_toggle = "dropdown" })<br />
+                @Html.ValidationMessageFor(m => m.CityName, "", new { @class = "text-danger", @id = "cityCheck" })
+                <div class="dropdown-menu list-group div-list-styling" role="menu" aria-labelledby="menu1" id="citylist">
+                        @if (Model.CityName.Any())
+                        {
+                            foreach (var item in Model.CityName)
+                            {
+                                <a role="menuitem" class="list-group-item cities " href="#">@item.CityName</a>
+                            }
+                        }
+                </div>
+            </div>
+            <div class="text-box-align">
+                <input class=" dropdown-toggle form-control input-lg" type="text" id="locality" data-toggle="dropdown" placeholder="Localities" autocomplete="off" readonly /><br />
+                <div class="dropdown-menu list-group div-list-styling" role="menu" ari2a-labelledby="menu1" id="localityMenu">
+                   
+                </div>
+            </div>
+            <div class="text-box-align">
+                @Html.TextBoxFor(model => model.SpecializationList, null, new { @class = " dropdown-toggle form-control input-lg", @id = "specialization", @placeholder = "Specialization", @autocomplete = "off", @readonly = "", data_toggle = "dropdown" })<br />
+                @Html.ValidationMessageFor(m => m.SpecializationList, "", new { @class = "text-danger", @id = "specCheck" })
+                <div class="dropdown-menu list-group div-list-styling" role="menu" aria-labelledby="menu1">
+                    @if (Model.SpecializationList.Any())
+                    {
+                        foreach (var item in Model.SpecializationList)
+                        {
+                            <a role="menuitem" class="list-group-item specialist" href="#">@item.SpecializationName</a>
+
+                        }
+                    }
+                </div>
+            </div>
+            <div class="btn-style">
+                <input type="submit" value=" Submit" class="btn btn-info btn-lg " id="submitPatientData" />
+            </div>
+        </div>
+    }
+</div>
