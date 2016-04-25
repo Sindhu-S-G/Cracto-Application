@@ -36,6 +36,20 @@ namespace Doctors_Information_System.Controllers
             return Json(CitiesList, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult SpecializationList()
+        {
+            var dbc = new DbConnectivityModel();
+            var SpeciaList = dbc.ListOutSpecialization();
+            return Json(SpeciaList, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetSpecialization(string SpecializationId)
+        {
+            var dbc = new DbConnectivityModel();
+            var Specialist = dbc.ListingSpecialization(SpecializationId);
+            return Json(Specialist, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult SearchResult()
         {
             //if (Session["EmailId"] != null /*&& Session["Role"] == DoctorRole*/)
@@ -173,26 +187,13 @@ namespace Doctors_Information_System.Controllers
         {
             //if (Session["EmailId"] != null /*&& Session["Role"] == DoctorRole*/)
             //{
-                var dbc = new DbConnectivityModel();
-                ViewBag.SpecializationList = dbc.ListOutSpecialization().ToList();
-                return View();
+               return View();
            // }
            // else
            // {
               //  return RedirectToAction("Login", "Home");
             //}
             
-        }
-        public ActionResult TimeSetting()
-        {
-            //if (Session["EmailId"] != null /*&& Session["Role"] == DoctorRole*/)
-           // {
-                return View();
-            //}
-           // else
-           // {
-           //     return RedirectToAction("Login", "Home");
-            //}
         }
         public ActionResult Feedback()
         {
@@ -215,6 +216,10 @@ namespace Doctors_Information_System.Controllers
            // {
            //     return RedirectToAction("Login", "Home");
            // }
+        }
+        public ActionResult AppointmentList()
+        {
+            return View();
         }
         public ActionResult Logout()
         {

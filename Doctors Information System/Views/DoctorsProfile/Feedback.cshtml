@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Feedback";
+}
+
+<div class="container" style="border:1px solid black;padding: 25px;">
+    <h3>
+        Share Your Experience
+    </h3>
+    <div style="border: 1px solid black;padding: 10px;height: 11em;">
+        <h5>
+            Would you like to reccomend the doctor to your family and friends?
+        </h5>
+        <div style="border: 1px solid black;padding: 20px;width: 10%;text-align: center;display: inline;float: left;">
+            <h3>
+                <a href="#"> Yes</a>
+            </h3>
+        </div>
+        <div style="border: 1px solid black;width: 10%;display: inline;float: left;text-align: center;padding: 20px;">
+            <h3>
+                <a href="#"> No</a>
+            </h3>
+        </div>
+    </div>
+
+    <div>
+        <div style="border: 1px solid black;padding: 10px;height: 19em;">
+            <h5>
+               Please describe your experience ?
+            </h5>
+            <div style="border:1px solid black;">
+                @Html.TextArea("Message", new { rows = 5, cols = 40,@placehoder = "Enter maximum 200 characters"})
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+

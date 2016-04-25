@@ -1,43 +1,578 @@
-﻿
-<div class="container body-content" style="border:1px solid black;">
-    <div class="profile-area" >
-        <div class="img-part">
+﻿@model Doctors_Information_System.Models.DoctorsProfileModel
+
+@{
+    var HoursList = new List<SelectListItem>();
+                        for(int hour = 1;hour<=12;hour++)
+                        {
+                            HoursList.Add(new SelectListItem { Text = hour.ToString(), Value = hour.ToString() });
+                        }
+    var MinutesList = new List<SelectListItem>();
+                        for (int minute = 0; minute < 60;minute++ )
+                        {
+                            if(minute < 10)
+                            {
+                                MinutesList.Add(new SelectListItem { Text = "0" + minute.ToString(), Value = "0" + minute.ToString() });
+                            }
+                            else
+                            {
+                                MinutesList.Add(new SelectListItem { Text =  minute.ToString(), Value = minute.ToString() });
+                            }
+                        }
+     var Duration = new List<SelectListItem>();
+     Duration.Add(new SelectListItem{Text = "AM", Value = "AM"});
+     Duration.Add(new SelectListItem{Text = "PM", Value = "PM"}); 
+}
+
+<div style="background-color:#f1f1f1;padding-left:70px">
+    <div class=" container DoctorsInfo" style="background-color:#ffffff">
+        <div class="SubPart" style="">
+            <div class="img_part" style="">
+            </div>
+            <div class="info-part" style="">
+                <h3>
+                    Name of the Doctor:
+                </h3>
+                <h4>
+                    Year of Experience:
+                </h4>
+            </div>
+            <div class="btn-edit" style="">
+                <input type="button" value="Edit" class="btn-md btn-primary" style="width:100%;height:2.5em;" id="EditingInfo">
+            </div>
+
+            <div class="editPart" style="">
+                <div style="height:4em;">
+                    <div style="display:inline;float:left;width:11.7em;">
+                        <h5>@Html.Label("Name:", htmlAttributes: new { @class = "control-label col-md-5" })</h5>
+                    </div>
+                    @Html.TextBox("FullName", null, new { @class = "form-control TextStyles", @placeholder = "Name", @id = "userName" })
+                </div>
+                <div style="height:4em;">
+                    <div style="display:inline;float:left;width:11.7em;padding-left:12px;">
+                        <h5>
+                            @Html.Label("Year Of Experience:", htmlAttributes: new { @class = "control-label col-md-15" })
+                        </h5>
+                    </div>
+                    @Html.TextBox("YearOfExperience", null, new { @class = "form-control TextStyles", @placeholder = "Experience", @id = "experience" })
+                </div>
+                    <div class="hidden-btn-edit">
+                        <input type="button" value="Save" class="btn-md btn-primary btn-align" id="SaveChanges">
+                        <input type="button" value="Cancel" class="btn-md btn-default" id="CancelChanges">
+                    </div>
+                </div>
+
         </div>
-        <div clas="info-part">
+        <div class="EducationalInfo eduDetails" id="EduQual">
             <h3>
-                Nprofessional-detailsame of the Doctor
+                Educational Qualification
             </h3>
-            <h4>
-                Gender:
-            </h4>
-            <h4>
-                Year of Qualification:
-            </h4>
-                <input type="button" value="Edit" class="btn btn-primary" id="editProfile"/>
+            <div class="btn-edit" style="">
+                <input type="button" value="Edit" class="btn-md btn-primary BtnToEdit" id="EditingQual">
+            </div>
         </div>
-    </div>
-    <div class="professional-details">
-        <h4>
-            Qualification of Doctor:
-        </h4>
-        <div class="btn-edit">
-            <input type="button" value="Edit" class="btn btn-primary" id="editQualification" style="width:5em;" />
+
+
+        <div class="EducationalInfo EditQual" id="EditedQual">
+            <h3>
+                Educational Qualification
+            </h3>
+            <span class="input-data " id="inputQual">
+            </span>
+            <a href="#" id="QualAdd">+Add</a>
+            <div class="hidden-btn-edit">
+                <input type="button" value="Save" class="btn-md btn-primary btn-align" id="SaveQual">
+                <input type="button" value="Cancel" class="btn-md btn-default btn-align" id="CancelQual">
+            </div>
         </div>
-    </div>
-    <div class="professional-details" style="border:1px solid black;width:100%;height:5em;padding :10px;">
-        <h4>
-            Specialization of Doctor:
-        </h4>
-        <div class="btn-edit">
-            <input type="button" value="Edit" class="btn btn-primary" id="editSpecialization" style="width:5em;" />
+
+        <div class="EducationalInfo" style="" id="spzDetails">
+            <h3>
+                Specialization
+            </h3>
+            <div class="btn-edit" style="">
+                <input type="button" value="Edit" class="btn-md btn-primary BtnToEdit" id="EditingSpzl">
+            </div>
         </div>
-    </div>
-    <div class="professional-details" style="border:1px solid black;width:100%;height:5em;padding :10px;">
-        <h4>
-            Consultation Fee of Doctor:
-        </h4>
-        <div class="btn-edit">
-            <input type="button" value="Edit" class="btn btn-primary" id="editCharge" style="width:5em;" />
+
+
+        <div class="EducationalInfo EditQual" style="margin:auto;border: 1px solid black;" id="spzEdit">
+            <h3>
+                Specialization
+            </h3>
+            <span class="input-data" id="inputSpzl">
+            </span>
+            <a href="#" id="SpzlAdd">+Add Specialization</a>
+            <div class="hidden-btn-edit">
+                <input type="button" value="Save" class="btn-md btn-primary btn-align" id="SaveSpzl">
+                <input type="button" value="Cancel" class="btn-md btn-default btn-align" id="CancelSpzl">
+            </div>
         </div>
+
+
+        <div class="EducationalInfo" id="timeDetails">
+            <h3>
+                Consulting Timings
+            </h3>
+            <div class="btn-edit" >
+                <input type="button" value="Edit" class="btn-md btn-primary BtnToEdit" id="EditingTiming">
+            </div>
+        </div>
+
+        <div class="EducationalInfo SetTimings" style="height:auto;">
+            <h3>
+                Set Timings
+            </h3>
+            <div style="border:1px solid black;width: initial;height: 3.5em;background-color:#efefef;">
+                <div style="border:1px solid black;display:inline;float:left;width: 20%;margin: 9px;padding:5px;">
+                    Visiting Hours
+                </div>
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 9px;margin-left:20px;padding:5px;">
+                    Session 1
+                </div>
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 9px;margin-left:42px;padding:5px;">
+                    Session 2
+                </div>
+            </div>
+            <div style="border:1px solid black;width: initial;height:4em;">
+                <div style="display:inline;float:left;width: 20%;margin: 5px;padding:5px;">
+                    @Html.CheckBox("MON", false, new { })
+                    @Html.Label("Monday")
+                </div>
+
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 5px;padding:5px;margin-left: 26px;" >
+                    <div style=" display:inline;float:left;">
+                    @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;margin:5px;">
+                        TO
+                    </div>                 
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    </div>
+
+                <div style="display:inline;float:left;margin:5px;margin-top:20px;">
+                    @Html.CheckBox("Afternoon", false)
+                </div>
+
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 5px;padding:5px;margin-left: 26px;">
+                    <div style=" display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;margin:5px;">
+                        TO
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                </div>
+
+                </div>
+
+            <div style="border:1px solid black;width: initial;height:4em;">
+                <div style="display:inline;float:left;width: 20%;margin: 5px;padding:5px;">
+                    @Html.CheckBox("TUE", false, new { })
+                    @Html.Label("Tuesday")
+                </div>
+
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 5px;padding:5px;margin-left: 26px;">
+                    <div style=" display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;margin:5px;">
+                        TO
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                </div>
+
+                <div style="display:inline;float:left;margin:5px;margin-top:20px;">
+                    @Html.CheckBox("Afternoon", false)
+                </div>
+
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 5px;padding:5px;margin-left: 26px;">
+                    <div style=" display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;margin:5px;">
+                        TO
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="border:1px solid black;width: initial;height:4em;">
+                <div style="display:inline;float:left;width: 20%;margin: 5px;padding:5px;">
+                    @Html.CheckBox("WED", false, new { })
+                    @Html.Label("Wednesday")
+                </div>
+
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 5px;padding:5px;margin-left: 26px;">
+                    <div style=" display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;margin:5px;">
+                        TO
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                </div>
+
+
+                <div style="display:inline;float:left;margin:5px;margin-top:20px;">
+                    @Html.CheckBox("Afternoon", false)
+                </div>
+
+
+
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 5px;padding:5px;margin-left: 26px;">
+                    <div style=" display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;margin:5px;">
+                        TO
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="border:1px solid black;width: initial;height:4em;">
+                <div style="display:inline;float:left;width: 20%;margin: 5px;padding:5px;">
+                    @Html.CheckBox("THRS", false, new { })
+                    @Html.Label("Thursday")
+                </div>
+
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 5px;padding:5px;margin-left: 26px;">
+                    <div style=" display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;margin:5px;">
+                        TO
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                </div>
+
+
+                <div style="display:inline;float:left;margin:5px;margin-top:20px;">
+                    @Html.CheckBox("Afternoon", false)
+                </div>
+
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 5px;padding:5px;margin-left: 26px;">
+                    <div style=" display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;margin:5px;">
+                        TO
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="border:1px solid black;width: initial;height:4em;">
+                <div style="display:inline;float:left;width: 20%;margin: 5px;padding:5px;">
+                    @Html.CheckBox("FRI", false, new { })
+                    @Html.Label("Friday")
+                </div>
+
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 5px;padding:5px;margin-left: 26px;">
+                    <div style=" display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;margin:5px;">
+                        TO
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                </div>
+
+
+                <div style="display:inline;float:left;margin:5px;margin-top:20px;">
+                    @Html.CheckBox("Afternoon", false)
+                </div>
+
+
+
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 5px;padding:5px;margin-left: 26px;">
+                    <div style=" display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;margin:5px;">
+                        TO
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="border:1px solid black;width: initial;height:4em;">
+                <div style="display:inline;float:left;width: 20%;margin: 5px;padding:5px;">
+                    @Html.CheckBox("SAT", false, new { })
+                    @Html.Label("Saturday")
+                </div>
+
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 5px;padding:5px;margin-left: 26px;">
+                    <div style=" display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;margin:5px;">
+                        TO
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                </div>
+
+
+                <div style="display:inline;float:left;margin:5px;margin-top:20px;">
+                    @Html.CheckBox("Afternoon", false)
+                </div>
+
+
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 5px;padding:5px;margin-left: 26px;">
+                    <div style=" display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;margin:5px;">
+                        TO
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="border:1px solid black;width: initial;height:4em;">
+                <div style="display:inline;float:left;width: 20%;margin: 5px;padding:5px;">
+                    @Html.CheckBox("SUN", false, new { })
+                    @Html.Label("Sunday")
+                </div>
+
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 5px;padding:5px;margin-left: 26px;">
+                    <div style=" display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;margin:5px;">
+                        TO
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                </div>
+
+
+
+                <div style="display:inline;float:left;margin:5px;margin-top:20px;">
+                    @Html.CheckBox("Afternoon", false)
+                </div>
+
+
+                <div style="border:1px solid black;display:inline;float:left;width: 32%;margin: 5px;padding:5px;margin-left: 26px;">
+                    <div style=" display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;margin:5px;">
+                        TO
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(HoursList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Hours", new SelectList(MinutesList, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                    <div style="display:inline;float:left;">
+                        @Html.DropDownList("Session", new SelectList(Duration, "Text", "Value"), new { @class = "form-control timeStyle" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="hidden-btn-edit">
+                <input type="button" value="Save" class="btn-md btn-primary btn-align" id="SaveTime">
+                <input type="button" value="Cancel" class="btn-md btn-default btn-align" id="CancelTime">
+            </div>
+
+        </div>
+
+
+
     </div>
 </div>

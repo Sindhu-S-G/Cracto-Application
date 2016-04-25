@@ -14,9 +14,9 @@
             <ul class="nav navbar-nav nav-pills">
                 <li>@Html.ActionLink("Find a Doctor", "SearchLayout", "DoctorsProfile", htmlAttributes: new { id = "searchLink" })</li>
                 <li>@Html.ActionLink("My Account", "Account", "DoctorsProfile", htmlAttributes: new { id = "profileLink" })</li>
-                <li>@Html.ActionLink("Set Timings", "TimeSetting", "DoctorsProfile", htmlAttributes: new { id = "profileLink" })</li>
+                <li>@Html.ActionLink("Profile", "EditProfilePage", "DoctorsProfile", htmlAttributes: new { id = "profileLink" })</li>
                 <li>@Html.ActionLink("Feedback", "Feedback", "DoctorsProfile", htmlAttributes: new { id = "profileLink" })</li>
-                <li>@Html.ActionLink("Records", "Record", "DoctorsProfile", htmlAttributes: new { id = "profileLink" })</li>
+                <li>@Html.ActionLink("Appointments", "AppointmentList", "DoctorsProfile", htmlAttributes: new { id = "profileLink" })</li>
             </ul>
             <div class="nav navbar-right ">
                 @Html.Partial("_DocsSettingsPartial")

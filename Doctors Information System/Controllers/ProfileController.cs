@@ -54,7 +54,7 @@ namespace Doctors_Information_System.Controllers
         }
 
         [HttpPost]
-        public ActionResult ChangeUserPassword(string CurrentPassword, string NewPassword)
+        public ActionResult ChangePassword(string CurrentPassword, string NewPassword)
         {
             var dbc = new DbConnectivityModel();
             var userId = Session["UserId"].ToString();
@@ -122,17 +122,19 @@ namespace Doctors_Information_System.Controllers
         }
        
         [HttpPost]
-        public ActionResult ChangeEmailId(string EmailId, string Password)
+        public ActionResult ChangeEmail(ChangeEmail change)
         {
             var dbc = new DbConnectivityModel();
+            change.EmailId = Request["EmailId"];
+            change.Password = Request["Password"];
             var userId = Session["UserId"].ToString();
-            bool result = dbc.ValidateEmail(EmailId);
+            bool result = dbc.ValidateEmail(change.EmailId);
             if (result == true)
             {
-                bool exist = dbc.CheckPassword(Password, userId);
+                bool exist = dbc.CheckPassword(change.Password, userId);
                 if (exist == true)
                 {
-                    bool outcome = dbc.ChangeEmailId(EmailId, Password, userId);
+                    bool outcome = dbc.ChangeEmailId(change.EmailId, change.Password, userId);
                     if (outcome == true)
                     {
                         return RedirectToAction("Account");
@@ -166,6 +168,7 @@ namespace Doctors_Information_System.Controllers
                 return RedirectToAction("Login", "Home");
             }
         }
+
         public ActionResult Feedback()
         {
             if (Session["UserId"] != null /*&& Session["Role"].ToString() == PatientRole*/)
@@ -177,6 +180,12 @@ namespace Doctors_Information_System.Controllers
                 return RedirectToAction("Login", "Home");
             }
         }
+
+        public ActionResult AppointmentList()
+        {
+            return View();
+        }
+
         public ActionResult Logout()
         {
             Session.Abandon();

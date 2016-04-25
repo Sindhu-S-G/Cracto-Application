@@ -9,7 +9,7 @@
         <div class="form-area" style="background-color:#5bc0de;">
             <h2 style="text-align:center;color:white;">Register</h2>
             <div style="background-color:#eeeeee;height:17.35em;">
-                @using (Html.BeginForm("DoctorSignUp", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                @using (Html.BeginForm())
                 {
 
                     <div class="traverse-link">
@@ -34,8 +34,6 @@
             </div>
 
 </div>
-
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

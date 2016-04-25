@@ -1,8 +1,6 @@
-﻿$('document').ready(function () {
+﻿
+$('#PatientRegister').on('click', function () {
     var emailExpression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-});
-
-$('#PatientRegister').on('click',function () {
     var email = $('#emailId').val();
     var password = $('#password').val();
     if (email =='')
@@ -16,12 +14,11 @@ $('#PatientRegister').on('click',function () {
     {
         $('#passwordAlert').text('Enter the Password');
     }
-    else
-    {
+    else {
         $.ajax({                                                                /*Ajax call*/
-            url: '/Home/PatientSignUp',
+            url: '/ServerSideCheck/CheckEmail',
             type: 'POST',
-            data: { EmailId: email, Password:password },
+            data: { EmailId: email },
             success: function (response) {
                 $('#emailAlert').html(response)
             }
@@ -29,8 +26,8 @@ $('#PatientRegister').on('click',function () {
     }
 });
 
-
 $('#DoctorRegister').on('click', function () {
+    var emailExpression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     var email = $('#emailId').val();
     var password = $('#password').val();
     if (email == '') {
@@ -44,9 +41,9 @@ $('#DoctorRegister').on('click', function () {
     }
     else {
         $.ajax({                                                                /*Ajax call*/
-            url: '/Home/DoctorSignUp',
+            url: '/ServerSideCheck/CheckEmail',
             type: 'POST',
-            data: { EmailId: email, Password: password },
+            data: { EmailId: email },
             success: function (response) {
                 $('#emailAlert').html(response)
             }
@@ -55,9 +52,8 @@ $('#DoctorRegister').on('click', function () {
 });
 
 
-$('#emailId').on('focus',function () {
+$('#emailId').on('focus', function () {
     $('#serverAlert').text(" ");
 });
-
 
   

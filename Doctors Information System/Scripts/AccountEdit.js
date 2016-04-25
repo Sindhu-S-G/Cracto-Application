@@ -2,6 +2,7 @@
     $('#state').val("Select State");
     $('#cityList').val("Select City");
     $('#cityList').attr('disabled', true);
+    $('#datePick').datepicker({ dateFormat: 'mm/dd/yy' });
     var gender, dateOfBirth, Bloodgroup, locality, cityid, state;
     $.ajax({
         url: '/Profile/GetDetails',
@@ -13,8 +14,8 @@
             $.each(data, function (index, itemData) {
                 $('#userName').val(itemData.FullName),
                 $('#userName').attr('value', itemData.FullName),
-                //$('#datePick').val(GetActualDate(itemData.DateOfBirth)),
-                console.log(itemData.DateOfBirth),
+                 Bdate = GetActualDate(itemData.DateOfBirth),
+                $('#datePick').val(Bdate),
                 $('#emailLink').prepend($('<span/>',{
                     text: itemData.EmailId
                 })),
@@ -42,7 +43,7 @@ $('#datePick').on('change', function () {
     dateOfBirth = $('#datePick').val();
 });                                                              /*Picking Date of birth*/
 
-$('#bloodGroup').on('change', function () {
+$('#BloodGroup').on('change', function () {
     Bloodgroup = $('#bloodGroup').val();
 });                                                            /*Blood Group*/
 
@@ -137,7 +138,7 @@ function GetActualDate(value) {
     var pattern = /Date\(([^)]+)\)/;
     var results = pattern.exec(value);
     var dt = new Date(parseFloat(results[1]));
-    return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+    return (dt.getMonth()+1)+"/"+dt.getDate()+"/"+dt.getFullYear();
 }
 
 

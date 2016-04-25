@@ -89,13 +89,17 @@ namespace Doctors_Information_System.Controllers
         /*To retrieve the patient Signin page*/
 
         [HttpPost]
-        public ActionResult PatientSignUp(string EmailId, string Password)/*To post the patient Sign in page data  (Working) */
+        public ActionResult PatientSignUp(RegistrationDetailModel rdm)/*To post the patient Sign in page data  (Working) */
         {
+            if (ModelState.IsValid)
+            { 
                 var dbc = new DbConnectivityModel();
-                bool result = dbc.ValidateEmail(EmailId);
+                rdm.EmailId = Request["EmailId"];
+                rdm.Password = Request["Password"];
+                bool result = dbc.ValidateEmail(rdm.EmailId);
                 if (result == true)
                 {
-                    bool outcome = dbc.RegisterPatientInOtp(EmailId, Password);
+                    bool outcome = dbc.RegisterPatientInOtp(rdm.EmailId, rdm.Password);
                     if (outcome == true)
                     {
                         return RedirectToAction("Login");
@@ -110,7 +114,12 @@ namespace Doctors_Information_System.Controllers
                     ViewBag.Message = "Email Already registered";
                     return View();
                 }
-        }
+            }
+            else
+            {
+                return View();
+            }
+            }
 
         public ActionResult DoctorSignUp()
         {
@@ -118,15 +127,17 @@ namespace Doctors_Information_System.Controllers
         }/*To retrieve the Doctor Signin page*/
 
         [HttpPost]
-        public ActionResult DoctorSignUp(string EmailId, string Password)
+        public ActionResult DoctorSignUp(RegistrationDetailModel rdm)
         {
            if (ModelState.IsValid)
             {
                 var dbc = new DbConnectivityModel();
-                bool result = dbc.ValidateEmail(EmailId);
+                rdm.EmailId = Request["EmailId"];
+                rdm.Password = Request["Password"];
+                bool result = dbc.ValidateEmail(rdm.EmailId);
                 if (result == true)
                 {
-                    bool outcome = dbc.RegisterDoctorInOtp(EmailId, Password);
+                    bool outcome = dbc.RegisterDoctorInOtp(rdm.EmailId, rdm.Password);
                     if (outcome == true)
                     {
                         return RedirectToAction("Login");
@@ -153,33 +164,5 @@ namespace Doctors_Information_System.Controllers
             return View();
         }/*To retrieve the OTP verification page*/
 
-       /* public ActionResult Signup()
-        {
-            return View();
-        }*//*To post the patient Sign in  data*/
-
-
-         /*[HttpPost]
-        public ActionResult Signup(LoginDetailsModel ldm)
-        {
-            DbConnectivityModel dbc = new DbConnectivityModel();
-            var emailId = Request["EmailId"];
-            var password = Request["Password"];
-            bool result = dbc.ValidatingEmail(emailId);
-            if(result)
-            {
-                return RedirectToAction("OtpVerification");
-            }
-            else
-            {
-                return View();
-            }
-        }*/
-       /* public ActionResult Logout()
-        {
-            Session.Abandon();
-            return RedirectToAction("SearchLayout");
-        }*/
-        
     }
 }

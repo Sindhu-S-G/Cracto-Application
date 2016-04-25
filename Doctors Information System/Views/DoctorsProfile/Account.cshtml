@@ -38,7 +38,7 @@
                 <div class="form-group input-style">
                     @Html.Label("Date Of Birth", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control", @placeholder = "dd/mm/yyyy", @id = "datePick", type = "date" })
+                        @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control", @placeholder = "dd/mm/yyyy", @id = "datePick"})
                         @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger", @id = "dboAlert" })
                     </div>
                 </div>

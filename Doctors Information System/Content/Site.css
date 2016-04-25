@@ -1,6 +1,6 @@
 ﻿body {
     padding-top: 50px;
-   /* padding-bottom: 20px;*/
+   padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -332,46 +332,114 @@ div
 
 
 /*Profile Editing of doctor*/
-.profile-area
+.DoctorsInfo
 {
     border:1px solid black;
-    height:15em;
+    margin: 15px;
+    width: 100%;
+    height: auto;
 }
-.img-part
+.SubPart
 {
     border:1px solid black;
-    width:30%;
-    height:15em;
-    display:inline;
-    float:left;
+    width: 98%;
+    height: 15em;
+    margin:15px;
+}
+.img_part
+{
+    border:1px solid black;
+    width: 20%;
+    height: 15em;
+    float: left;
+    display: inline;
 }
 .info-part
 {
     border:1px solid black;
-    width:70%;
-    height:auto;
+    margin-left: 10px;
+    width: 75%;
+    height: auto;
     display:inline;
     float:left;
-    padding:10px;
-}
-#editProfile
-{
-    width:10em;
-}
-.professional-details
-{
-    border:1px solid black;
-    width:100%;
-    height:5em;
-    padding :5px;
 }
 .btn-edit
 {
-    position:relative;
-    left:90%;
-    bottom:20%;
+    width: 10%;
+    float: right;
+    display: inline;
+    border-radius:5px;
+}
+.editPart
+{
+    margin-left: 10px;
+    margin-top: 10px;
+    padding-top:10px;
+    width :75%;
+    height:auto;
+    display:inline;
+    float:left;
+}
+.hidden-btn-edit
+{
+    width: 20%;
+    float: right;
+    display: inline;
+    border-radius:5px;
+    position: relative;
+    bottom: 15px;
+}
+.btn-align
+{
+    width:50%;
+    height:2.5em;
+    float: left;
+    display: inline;
+}
+#CancelChanges
+{
+    width:50%;
+    height:2.5em;
+}
+.TextStyles
+{
+    font-size:18px;
+    height:2em;
+    margin:10px;
+}
+.EducationalInfo
+{
+    border:1px solid black;
+    width: 98%;
+    height: auto;
+    margin:15px;
+}
+.input-data
+{
+    display:inline;
+    width:auto;
+    text-align:center;
+    padding:10px;
+}
+.hidden-span
+{
+    margin:20px;
+    padding:10px;
+}
+.BtnToEdit
+{
+    width:100%;
+    height:2.5em;
+    position: relative;
+    top: -56px;
+}
+.timeStyle
+{
+    padding:5px;
 }
 
+
+ 
 
 /*Appointment*/
 .data-area
@@ -381,6 +449,9 @@ div
     border:1px solid black;
     border-radius:5px;
     height:25em;
+    display:inline;
+    float:left;
+    margin:4em;
 }
 .data-style
 {

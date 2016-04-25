@@ -42,7 +42,7 @@
                 <div class="form-group input-style">
                     @Html.Label("Date Of Birth", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control", @placeholder = "dd/mm/yyyy", @id = "datePick", type = "date" })
+                        @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control", @id = "datePick", type = "text" })
                         @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger", @id = "dboAlert" })
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                                                                               new SelectListItem{Text="AB+",Value="AB+"},
                                                                               new SelectListItem{Text="AB+",Value="AB+"},
                                                                               new SelectListItem{Text="AB-",Value="AB-"}
-                                                                              }, "Select Blood group", new { @class = "form-control dropdown-list", @id = "bloodGroup" })
+                                                                              }, "Select Blood group", new { @class = "form-control dropdown-list", @id = "BloodGroup" })
                         @Html.ValidationMessageFor(model => model.BloodGroup, "", new { @class = "text-danger" })
                     </div>
                 </div>

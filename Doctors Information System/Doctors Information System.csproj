@@ -169,6 +169,7 @@
     <Compile Include="Controllers\DoctorsProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\ServerSideCheckController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -233,10 +234,12 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\AccountEdit.js" />
+    <Content Include="Scripts\Appointment.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Changes.js" />
+    <Content Include="Scripts\DoctorsProfile.js" />
     <Content Include="Scripts\HomePage.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -254,7 +257,6 @@
     <Content Include="Scripts\TimeDivisioning.js" />
     <Content Include="Scripts\UserRegistration.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Shared\HtmlPage1.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -267,7 +269,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\PatientSignUp.cshtml" />
     <Content Include="Views\Home\SearchLayout.cshtml" />
@@ -275,7 +276,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\DoctorSignUp.cshtml" />
-    <Content Include="Views\Profile\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_ProfileLayout.cshtml" />
     <Content Include="Views\Shared\_SettingsPartial.cshtml" />
     <Content Include="Views\Profile\ChangePassword.cshtml" />
@@ -297,6 +297,12 @@
     <Content Include="Views\DoctorsProfile\Account.cshtml" />
     <Content Include="Views\DoctorsProfile\ChangeEmail.cshtml" />
     <Content Include="Views\DoctorsProfile\ChangePassword.cshtml" />
+    <Content Include="Views\DoctorsProfile\Feedback.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Profile\_ViewStart.cshtml" />
+    <Content Include="Views\DoctorsProfile\AppointmentList.cshtml" />
+    <Content Include="Views\Profile\AppointmentList.cshtml" />
+    <Content Include="Views\Profile\Appointment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

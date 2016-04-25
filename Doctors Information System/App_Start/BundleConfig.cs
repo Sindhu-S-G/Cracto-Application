@@ -12,11 +12,12 @@ namespace Doctors_Information_System
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/HomePage.js",
                          "~/Scripts/LoginValidation.js",
-                          "~/Scripts/Changes.js"));
+                          "~/Scripts/Changes.js",
+                          "~/Scripts/TimeDivisioning.js",
+                           "~/Scripts/Appointment.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/register").Include(
-                        "~/Scripts/UserRegistration.js",
-                        "~/Scripts/TimeDivisioning.js"));
+                         "~/Scripts/UserRegistration.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -28,7 +29,8 @@ namespace Doctors_Information_System
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/DoctorsProfile.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
@@ -42,7 +44,8 @@ namespace Doctors_Information_System
           "~/Scripts/DoctorsAccount.js"));
             //css  
             bundles.Add(new StyleBundle("~/Content/cssjqryUi").Include(
-                   "~/Content/jquery-ui.css"));  
+                   "~/Content/jquery-ui.css",
+                   "~/Content/themes/base/all.css"));  
         }
     }
 }

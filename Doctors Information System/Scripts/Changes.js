@@ -17,7 +17,7 @@ $('#SaveEmail').on('click', function () {
     else
     {
         $.ajax({                                                                /*Ajax call*/
-            url: '/Profile/ChangeEmailId',
+            url: '/ServerSideCheck/CheckEmail',
             type: 'POST',
             data: { EmailId: email,
                     Password: password},
@@ -27,12 +27,12 @@ $('#SaveEmail').on('click', function () {
         });
     }
 });
-$('#newEmail').on('change',function () {
+$('#newEmail').on('focus',function () {
     $('#newEmailAlert').text('');
     $('#serverEmailAlert').text('');
 
 });
-$('#userPassword').on('change',function () {
+$('#userPassword').on('focus',function () {
     $('#userPasswordAlert').text('');
     $('#serverPasswordAlert').text('');
 });
@@ -66,7 +66,7 @@ $('#SavePassword').on('click',function () {
     else
     {
         $.ajax({
-            url: '/Profile/ChangeUserPassword',
+            url: '/Profile/ChangePassword',
             type: 'POST',
             data: {CurrentPassword: currentPassword,
                 NewPassword: newPassword
@@ -79,45 +79,14 @@ $('#SavePassword').on('click',function () {
     }
 });
 
-$('#currentPassword').on('change', function () {
+$('#currentPassword').on('focus', function () {
     $('#currentPasswordAlert').text('');
     $('#serverPasswordAlert').text('');
 });
-$('#newPassword').on('change', function () {
+$('#newPassword').on('focus', function () {
     $('#newPasswordAlert').text('');
 });
-$('#confirmPassword').on('change', function () {
+$('#confirmPassword').on('focus', function () {
     $('#confirmPasswordAlert').text('');
-});
-
-
-
-/*For Doctor's Profile*/
-$('#SaveDoctorEmail').on('click', function () {
-    var emailExpression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    var email = $('#newEmail').val();
-    var password = $('#userPassword').val();
-    if (email == '') {
-        $('#newEmailAlert').text('Enter the email');
-    }
-    else if (!(email.match(emailExpression)))                                      /*Click Event*/ {
-        $('#newEmailAlert').text('Invalid Email Id');
-    }
-    else if (password == '') {
-        $('#userPasswordAlert').text('Enter the Password');
-    }
-    else {
-        $.ajax({                                                                /*Ajax call*/
-            url: '/Profile/ChangeEmailId',
-            type: 'POST',
-            data: {
-                EmailId: email,
-                Password: password
-            },
-            success: function (response) {
-                $('#newEmailAlert').html(response);
-            }
-        });
-    }
 });
 

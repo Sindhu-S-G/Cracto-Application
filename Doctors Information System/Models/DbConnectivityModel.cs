@@ -47,6 +47,13 @@ namespace Doctors_Information_System.Models
             return result;
         }/*Listing out the Specialization in home page*/
 
+        public IEnumerable<SpecializationModels> ListingSpecialization(string SpecializationId)
+        {
+            string query = "SELECT SpecializationId, SpecializationName FROM dbo.SpecializationDetails  WHERE SpecializationId = " + SpecializationId;
+            var result = Connect.Query<SpecializationModels>(query);
+            return result;
+        }
+
         public IEnumerable<StateDetailsModels> ListOutStates()
         {
             string query = "SELECT StateId, StateName FROM dbo.StateDetails";
